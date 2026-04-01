@@ -8,7 +8,6 @@
   gap: 32px;
   flex-wrap: wrap;
   padding: 10px 32px;
-  /* flex-direction: column; */
 }
 
 .profile-avatar img {
@@ -31,6 +30,7 @@
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+  padding: 12px 45px;
 }
 
 .profile-small-btn {

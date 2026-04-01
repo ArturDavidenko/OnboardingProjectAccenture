@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie rental - Login</title>
+
   <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main class="page-wrapper">
@@ -14,39 +15,93 @@
 
     <section class="login-page">
       <div class="auth-box">
-        <label class="auth-label" for="login-email">Email</label>
-        <input class="auth-input" id="login-email" type="email" placeholder="email" />
+        <form id="loginForm" novalidate>
+          <label class="auth-label" for="login-email">Email</label>
+          <input
+            class="auth-input"
+            id="login-email"
+            type="text"
+            placeholder="email"
+          />
 
-        <label class="auth-label" for="login-password">Password</label>
-        <input class="auth-input" id="login-password" type="password" placeholder="password" />
+          <label class="auth-label" for="login-password">Password</label>
+          <input
+            class="auth-input"
+            id="login-password"
+            type="password"
+            placeholder="password"
+          />
 
-        <div class="auth-action">
-          <a class="dark-link-btn auth-btn" href="../homePage/home.html">Sign in</a>
-        </div>
+          <p id="loginError" class="form-error"></p>
+
+          <div class="auth-action">
+            <button class="dark-btn auth-btn" type="submit">Sign in</button>
+          </div>
+        </form>
       </div>
 
-      <div class="auth-box">
-        <label class="auth-label" for="reg-name">Name</label>
-        <input class="auth-input" id="reg-name" type="text" placeholder="name" />
+      <div class="register-action" id="registerAction">
+        <button id="showRegisterBtn" class="dark-btn register-btn" type="button">
+          Register
+        </button>
+      </div>
 
-        <label class="auth-label" for="reg-surname">Surname</label>
-        <input class="auth-input" id="reg-surname" type="text" placeholder="surname" />
+      <div class="auth-box hidden" id="registerBox">
+        <form id="registerForm" novalidate>
+          <label class="auth-label" for="reg-name">Name</label>
+          <input
+            class="auth-input"
+            id="reg-name"
+            type="text"
+            placeholder="name"
+          />
 
-        <label class="auth-label" for="reg-email">Email</label>
-        <input class="auth-input" id="reg-email" type="email" placeholder="email" />
+          <label class="auth-label" for="reg-surname">Surname</label>
+          <input
+            class="auth-input"
+            id="reg-surname"
+            type="text"
+            placeholder="surname"
+          />
 
-        <label class="auth-label" for="reg-email-again">Email again</label>
-        <input class="auth-input" id="reg-email-again" type="email" placeholder="email" />
+          <label class="auth-label" for="reg-email">Email</label>
+          <input
+            class="auth-input"
+            id="reg-email"
+            type="text"
+            placeholder="email"
+          />
 
-        <label class="auth-label" for="reg-password">Password</label>
-        <input class="auth-input" id="reg-password" type="password" placeholder="password" />
+          <label class="auth-label" for="reg-email-again">Email again</label>
+          <input
+            class="auth-input"
+            id="reg-email-again"
+            type="text"
+            placeholder="email"
+          />
 
-        <label class="auth-label" for="reg-password-again">Password again</label>
-        <input class="auth-input" id="reg-password-again" type="password" placeholder="password" />
+          <label class="auth-label" for="reg-password">Password</label>
+          <input
+            class="auth-input"
+            id="reg-password"
+            type="password"
+            placeholder="password"
+          />
 
-        <div class="auth-action">
-          <a class="dark-link-btn auth-btn" href="../homePage/home.html">Register</a>
-        </div>
+          <label class="auth-label" for="reg-password-again">Password again</label>
+          <input
+            class="auth-input"
+            id="reg-password-again"
+            type="password"
+            placeholder="password"
+          />
+
+          <p id="registerError" class="form-error"></p>
+
+          <div class="auth-action">
+            <button class="dark-btn auth-btn" type="submit">Register</button>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -57,5 +112,7 @@
       <p>2026</p>
     </div>
   </footer>
+
+  <script src="login.js"></script>
 </body>
 </html>

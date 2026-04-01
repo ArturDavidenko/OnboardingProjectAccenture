@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie rental - Your movies</title>
+
   <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="yourMovies.css" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main class="page-wrapper">
@@ -14,7 +14,7 @@
 
     <nav class="navbar">
       <a href="../homePage/home.html">Home</a>
-      <a href="../yourMoviesPage/yourMovies.html">Your movies</a>
+      <a href="yourMovies.html">Your movies</a>
       <a href="../profilePage/profile.html">Profile</a>
     </nav>
 
@@ -30,29 +30,7 @@
           <div></div>
         </div>
 
-        <div class="your-movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div class="small-time-controls">
-            <button class="arrow-btn" type="button">&lt;</button>
-            <span class="time-box">12h</span>
-            <button class="arrow-btn" type="button">&gt;</button>
-          </div>
-          <div>4.55$</div>
-          <button class="remove-btn" type="button">Remove</button>
-        </div>
-
-        <div class="your-movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div class="small-time-controls">
-            <button class="arrow-btn" type="button">&lt;</button>
-            <span class="time-box">12h</span>
-            <button class="arrow-btn" type="button">&gt;</button>
-          </div>
-          <div>4.55$</div>
-          <button class="remove-btn" type="button">Remove</button>
-        </div>
+        <div id="yourMoviesList"></div>
       </div>
     </section>
   </main>
@@ -63,5 +41,7 @@
       <p>2026</p>
     </div>
   </footer>
+
+  <script src="yourMovies.js"></script>
 </body>
 </html>

@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie rental - Home</title>
+
   <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main class="page-wrapper">
     <h1 class="site-title">Movie rental</h1>
 
     <nav class="navbar">
-      <a href="../homePage/home.html">Home</a>
+      <a href="home.html">Home</a>
       <a href="../yourMoviesPage/yourMovies.html">Your movies</a>
       <a href="../profilePage/profile.html">Profile</a>
     </nav>
@@ -30,46 +31,19 @@
           <div></div>
         </div>
 
-        <div class="movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div>4.55$</div>
-          <div><img class="stock-icon" src="../assets/images/Check.png" alt="Available" /></div>
-          <button class="rent-btn" type="button">Rent</button>
-        </div>
-
-        <div class="movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div>4.55$</div>
-          <div><img class="stock-icon" src="../assets/images/Check.png" alt="Available" /></div>
-          <button class="rent-btn" type="button">Rent</button>
-        </div>
-
-        <div class="movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div>4.55$</div>
-          <div><img class="stock-icon" src="../assets/images/Check.png" alt="Available" /></div>
-          <button class="rent-btn" type="button">Rent</button>
-        </div>
-
-        <div class="movie-row">
-          <div>Batman</div>
-          <div>Action</div>
-          <div>4.55$</div>
-          <div><img class="stock-icon" src="../assets/images/Cross.png" alt="Not available" /></div>
-          <button class="rent-btn" type="button">Rent</button>
-        </div>
+        <!-- JS will generate rows here -->
+        <div id="moviesList"></div>
       </div>
     </section>
   </main>
-
+  
   <footer>
     <div class="footer-content">
       <p>Made by: Arturs Davidenko</p>
       <p>2026</p>
     </div>
   </footer>
+
+  <script src="home.js"></script>
 </body>
 </html>

@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie rental - Profile</title>
+
   <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="profile.css" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main class="page-wrapper">
@@ -15,7 +16,7 @@
     <nav class="navbar">
       <a href="../homePage/home.html">Home</a>
       <a href="../yourMoviesPage/yourMovies.html">Your movies</a>
-      <a href="../profilePage/profile.html">Profile</a>
+      <a href="profile.html">Profile</a>
     </nav>
 
     <section class="panel profile-panel">
@@ -28,22 +29,29 @@
 
         <div>
           <div class="profile-info">
-            <p><strong>Name:</strong> John</p>
-            <p><strong>Surname:</strong> Newman</p>
-            <p><strong>Email:</strong> john.newman@mail.com</p>
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Surname:</strong> <span id="profileSurname"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
           </div>
 
-            
           
         </div>
-        <div class="profile-actions">
-                <button class="dark-btn profile-small-btn" type="button">Reset password</button>
-                <button class="dark-btn profile-small-btn" type="button">Reset email</button>
-            </div>
+        
       </div>
-      
+
+          <div class="profile-actions">
+            <button class="dark-btn profile-small-btn" type="button">
+              Reset password
+            </button>
+            <button
+              id="resetEmailBtn"
+              class="dark-btn profile-small-btn"
+              type="button"
+            >
+              Reset email
+            </button>
+          </div>
     </section>
-    
   </main>
 
   <footer>
@@ -52,5 +60,7 @@
       <p>2026</p>
     </div>
   </footer>
+
+  <script src="profile.js"></script>
 </body>
 </html>
