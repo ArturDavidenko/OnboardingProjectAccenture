@@ -1,0 +1,138 @@
+:root {
+  --dark-btn: #363636;
+  --red-btn: #C93333;
+  --dark-text: #000000;
+  --bright-text: #FFFFFF;
+  --bg: #D9D9D9;
+  --panel: #ECECEC;
+  --row: #D3D3D3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--dark-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 32px 40px;
+  flex: 1;
+}
+
+.site-title {
+  text-align: center;
+  color: var(--bright-text);
+  font-size: 28px;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.navbar {
+  background-color: var(--dark-btn);
+  border-radius: 24px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.navbar a {
+  color: var(--bright-text);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.navbar a:hover {
+  opacity: 0.85;
+}
+
+.panel {
+  background-color: var(--panel);
+  border-radius: 24px;
+  padding: 28px;
+}
+
+.panel-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.dark-btn,
+.dark-link-btn,
+.red-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: var(--bright-text);
+  border-radius: 18px;
+  font-size: 16px;
+}
+
+.dark-btn,
+.dark-link-btn {
+  background-color: var(--dark-btn);
+}
+
+.red-btn {
+  background-color: var(--red-btn);
+}
+
+footer {
+  background-color: var(--dark-btn);
+  color: var(--bright-text);
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 16px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .site-title {
+    font-size: 24px;
+  }
+}
