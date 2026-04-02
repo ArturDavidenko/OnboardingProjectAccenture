@@ -9,37 +9,12 @@ const defaultMovies = [
   { id: 8, name: "Gladiator", genre: "Historical", rentalPrice: 4.10, countInStock: 0 }
 ];
 
-const MOVIES_STORAGE_KEY = "movies";
-const YOUR_MOVIES_STORAGE_KEY = "yourMovies";
-
-function getMovies() {
+function initializeMovies() {
   const savedMovies = localStorage.getItem(MOVIES_STORAGE_KEY);
 
-  if (savedMovies) {
-    return JSON.parse(savedMovies);
+  if (!savedMovies) {
+    saveMovies(defaultMovies);
   }
-
-  localStorage.setItem(MOVIES_STORAGE_KEY, JSON.stringify(defaultMovies));
-  return [...defaultMovies];
-}
-
-function saveMovies(movies) {
-  localStorage.setItem(MOVIES_STORAGE_KEY, JSON.stringify(movies));
-}
-
-function getYourMovies() {
-  const savedYourMovies = localStorage.getItem(YOUR_MOVIES_STORAGE_KEY);
-
-  if (savedYourMovies) {
-    return JSON.parse(savedYourMovies);
-  }
-
-  localStorage.setItem(YOUR_MOVIES_STORAGE_KEY, JSON.stringify([]));
-  return [];
-}
-
-function saveYourMovies(yourMovies) {
-  localStorage.setItem(YOUR_MOVIES_STORAGE_KEY, JSON.stringify(yourMovies));
 }
 
 function getStockIconPath(countInStock) {
@@ -66,17 +41,18 @@ function renderMovies() {
       <div>${movie.name}</div>
       <div>${movie.genre}</div>
       <div>${movie.rentalPrice.toFixed(2)}$</div>
-      <div>
-        <img 
-          class="stock-icon" 
-          src="${getStockIconPath(movie.countInStock)}" 
-          alt="${isInStock ? "In stock" : "Out of stock"}"
+      <div class="stock-cell">
+        <img
+          class="stock-icon"
+          src="${getStockIconPath(movie.countInStock)}"
+          alt="${isInStock ? "In stock" : "Not in stock"}"
         />
       </div>
       <button 
         class="rent-btn ${!isInStock ? "disabled-btn" : ""}" 
         data-id="${movie.id}"
         ${!isInStock ? "disabled" : ""}
+        type="button"
       >
         Rent
       </button>
@@ -134,6 +110,22 @@ function rentMovie(movieId) {
   renderMovies();
 }
 
+function setupLogout() {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (!logoutBtn) {
+    return;
+  }
+
+  logoutBtn.addEventListener("click", function () {
+    clearCurrentUser();
+    window.location.href = "../loginPage/login.html";
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  protectPage("../loginPage/login.html");
+  initializeMovies();
+  setupLogout();
   renderMovies();
 });

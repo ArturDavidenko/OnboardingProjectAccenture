@@ -16,6 +16,10 @@ const regPassword = document.getElementById("reg-password");
 const regPasswordAgain = document.getElementById("reg-password-again");
 const registerError = document.getElementById("registerError");
 
+document.addEventListener("DOMContentLoaded", function () {
+  redirectIfLoggedIn("../homePage/home.html");
+});
+
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -26,34 +30,19 @@ function containsAtLeastTwoLetters(value) {
   return lettersOnly.length >= 2;
 }
 
-loginForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const emailValue = loginEmail.value.trim();
-  const passwordValue = loginPassword.value.trim();
-
-  loginError.textContent = "";
-
+function validateLoginFields(emailValue, passwordValue) {
   if (emailValue === "" || passwordValue === "") {
-    loginError.textContent = "Please fill in both email and password.";
-    return;
+    return "Please fill in both email and password.";
   }
 
   if (!isValidEmail(emailValue)) {
-    loginError.textContent = "Please enter a valid email address.";
-    return;
+    return "Please enter a valid email address.";
   }
 
-  window.location.href = "../homePage/home.html";
-});
+  return "";
+}
 
-showRegisterBtn.addEventListener("click", function () {
-  registerBox.classList.remove("hidden");
-  registerAction.classList.add("hidden");
-});
-
-
-function validateInputFields(
+function validateRegisterFields(
   nameValue,
   surnameValue,
   emailValue,
@@ -108,6 +97,52 @@ function validateInputFields(
   return "";
 }
 
+/* -------------------- LOGIN -------------------- */
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const emailValue = loginEmail.value.trim();
+  const passwordValue = loginPassword.value.trim();
+
+  loginError.textContent = "";
+
+  const loginValidationMessage = validateLoginFields(emailValue, passwordValue);
+
+  if (loginValidationMessage !== "") {
+    loginError.textContent = loginValidationMessage;
+    return;
+  }
+
+  const registeredUsers = getRegisteredUsers();
+
+  const foundUser = registeredUsers.find(function (user) {
+    return (
+      user.email.toLowerCase() === emailValue.toLowerCase() &&
+      user.password === passwordValue
+    );
+  });
+
+  if (!foundUser) {
+    loginError.textContent = "Invalid email or password.";
+    return;
+  }
+
+  setCurrentUser({
+    name: foundUser.name,
+    surname: foundUser.surname,
+    email: foundUser.email
+  });
+
+  window.location.href = "../homePage/home.html";
+});
+
+
+showRegisterBtn.addEventListener("click", function () {
+  registerBox.classList.remove("hidden");
+  registerAction.classList.add("hidden");
+});
+
+
 registerForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -120,7 +155,7 @@ registerForm.addEventListener("submit", function (event) {
 
   registerError.textContent = "";
 
-  const validationMessage = validateInputFields(
+  const validationMessage = validateRegisterFields(
     nameValue,
     surnameValue,
     emailValue,
@@ -133,6 +168,33 @@ registerForm.addEventListener("submit", function (event) {
     registerError.textContent = validationMessage;
     return;
   }
+
+  const registeredUsers = getRegisteredUsers();
+
+  const emailAlreadyExists = registeredUsers.some(function (user) {
+    return user.email.toLowerCase() === emailValue.toLowerCase();
+  });
+
+  if (emailAlreadyExists) {
+    registerError.textContent = "A user with this email already exists.";
+    return;
+  }
+
+  const newUser = {
+    name: nameValue,
+    surname: surnameValue,
+    email: emailValue,
+    password: passwordValue
+  };
+
+  registeredUsers.push(newUser);
+  saveRegisteredUsers(registeredUsers);
+
+  setCurrentUser({
+    name: newUser.name,
+    surname: newUser.surname,
+    email: newUser.email
+  });
 
   window.location.href = "../homePage/home.html";
 });

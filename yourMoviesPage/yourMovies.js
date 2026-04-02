@@ -1,37 +1,6 @@
-const MOVIES_STORAGE_KEY = "movies";
-const YOUR_MOVIES_STORAGE_KEY = "yourMovies";
-
 const MIN_RENT_HOURS = 12;
 const MAX_RENT_HOURS = 168;
 const RENT_STEP = 12;
-
-function getMovies() {
-  const savedMovies = localStorage.getItem(MOVIES_STORAGE_KEY);
-
-  if (savedMovies) {
-    return JSON.parse(savedMovies);
-  }
-
-  return [];
-}
-
-function saveMovies(movies) {
-  localStorage.setItem(MOVIES_STORAGE_KEY, JSON.stringify(movies));
-}
-
-function getYourMovies() {
-  const savedYourMovies = localStorage.getItem(YOUR_MOVIES_STORAGE_KEY);
-
-  if (savedYourMovies) {
-    return JSON.parse(savedYourMovies);
-  }
-
-  return [];
-}
-
-function saveYourMovies(yourMovies) {
-  localStorage.setItem(YOUR_MOVIES_STORAGE_KEY, JSON.stringify(yourMovies));
-}
 
 function calculateMoviePrice(basePrice, hours) {
   return (basePrice * (hours / 12)).toFixed(2);
@@ -155,5 +124,6 @@ function removeMovie(index) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  protectPage("../loginPage/login.html");
   renderYourMovies();
 });
